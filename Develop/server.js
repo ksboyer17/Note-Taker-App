@@ -1,36 +1,25 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const routes = require('./routes/routes.js')
+//creating my port path
+const PORT = process.env.PORT || 8080;
+//creating the express app itself
+const app = express();
+//look in the public folder for public assets
+app.use(express.static("public"))
 
-const PORT = process.env || 8080;
-
-const handleRequest = (req, res) => {
-    // Saving the request data as a variable
-    let requestData = '';
-
-     // When the server receives data...
-  req.on('data', (data) => {
-    // Add it to requestData.
-    requestData += data;
-  });
-
-  // When the request has ended...
-  req.on('end', () => {
-    // Log (server-side) the request method, as well as the data received!
-    console.log(`You did a ${req.method}, with the data:\n, ${requestData}`);
-    res.end();
-  });
-};
+//passing in routes from the router folder
+app.use(routes);
 
 //Create api call for notes and figure out how to send the note back to the browser
 
 
 
 
-// Created the server, assign it to a variable called "server"
-const server = express.createServer(handleRequest);
+
 
 // Starting my server
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server listening on: http://localhost:${PORT}`);
 });
