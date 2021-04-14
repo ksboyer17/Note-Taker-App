@@ -2,6 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
+const PORT = process.env || 8080;
+
 const handleRequest = (req, res) => {
     // Saving the request data as a variable
     let requestData = '';
