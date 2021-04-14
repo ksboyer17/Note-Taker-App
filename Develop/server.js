@@ -22,14 +22,15 @@ const handleRequest = (req, res) => {
   });
 };
 
+//Create api call for notes and figure out how to send the note back to the browser
 
 
 
 
-    // Create the server, assign it to a variable called "server"
-const server = http.createServer(handleRequest);
+// Created the server, assign it to a variable called "server"
+const server = express.createServer(handleRequest);
 
-// Start our server
+// Starting my server
 server.listen(PORT, () => {
   console.log(`Server listening on: http://localhost:${PORT}`);
 });
