@@ -12,6 +12,15 @@ app.use(express.static("public"))
 //passing in routes from the router folder
 app.use(routes);
 
+//sets up express ap to handle parsing
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
+//router
+require()(app)
+require()(app)
+require()(app)
+require()(app)
 //Create api call for notes and figure out how to send the note back to the browser
 
 
