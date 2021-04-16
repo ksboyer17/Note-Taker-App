@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const routes = require('./routes/routes.js')
+const routes = require('./routes/htmlroutes.js')
 //creating my port path
 const PORT = process.env.PORT || 8080;
 //creating the express app itself
