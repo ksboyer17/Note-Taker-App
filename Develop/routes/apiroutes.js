@@ -12,7 +12,7 @@ app.get("/api/notes", function(req, res){
 //adding user notes with the post method
 
 app.post("/api/notes", function(req,res){
-    
+    req.body(notesData)
 })
 
 //     // Empty out the arrays of data
