@@ -1,16 +1,15 @@
 const util = require('util');
 const fs =require('fs');
-const uuidv1 = require('uuid/v1');
-const { param } = require('../routes/htmlroutes');
-const readfile = util.promisify(fs.readFile);
-const writefile = util.promisify(fs.writeFile);
+// const uid = require('uuid/v1');
+const readFileAsync = util.promisify(fs.readFile);
+const writeFileAsync = util.promisify(fs.writeFile);
 
 class Store {
     read(){
-        return readfile("./db.json", "UTF8")
+        return readFileAsync("db/db.json", "UTF8")
     }
     write(param){
-       return writefile("./db.json", JSON.stringify(param))
+       return writeFileAsync("db/db.json", JSON.stringify(param))
     }
     getnotes(){
         return this.read().then( (notes)=>{
@@ -26,10 +25,10 @@ class Store {
     }
     addnotes(param){
         const {title,text} = param
-        const newNote = {title, text, id: uuidv1()}    
+        const newNote = {title, text, id: 5}    
         return this.getnotes()
         .then((notes)=>[...notes,newNote])
-        .then((addNote)=> this.write(addNote))
+        .then((theNote)=> this.write(theNote))
         .then(()=>newNote)
     }
     removenotes (param){
